@@ -1,5 +1,13 @@
 #!/bin/bash
 
+ENV_FILE="../config/.env"
+
+if [ -f "$ENV_FILE" ]; then
+  # Filters out lines that start with comments
+  export $(grep -v '^#' "$ENV_FILE" | xargs)
+fi
+
+# Ensures the user is logged in to Azure
 az account show &> /dev/null
 
 if [ $? -ne 0 ]; then
