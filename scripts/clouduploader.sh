@@ -14,3 +14,12 @@ if [ $? -ne 0 ]; then
   echo "Please log in to Azure using 'az login' before running this script"
   exit 1
 fi
+
+# Ensures a file path is provided
+FILE_PATH=$1
+
+if [ -z "$FILE_PATH"]; then
+  echo "Error: No file path provided. Please specify a file to upload."
+  echo "Usage: $0 <file_path>"
+  exit 1
+fi
