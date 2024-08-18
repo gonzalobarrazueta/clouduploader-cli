@@ -23,3 +23,6 @@ if [ -z "$FILE_PATH"]; then
   echo "Usage: $0 <file_path>"
   exit 1
 fi
+
+# Upload file to Azure Blob Storage
+az storage blob upload --account-name "$AZURE_STORAGE_ACCOUNT" --container-name "$CONTAINER_NAME" --connection-string "$AZURE_STORAGE_CONNECTION_STRING" --file "$FILE_PATH"
