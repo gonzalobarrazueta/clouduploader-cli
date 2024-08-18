@@ -26,3 +26,10 @@ fi
 
 # Upload file to Azure Blob Storage
 az storage blob upload --account-name "$AZURE_STORAGE_ACCOUNT" --container-name "$CONTAINER_NAME" --connection-string "$AZURE_STORAGE_CONNECTION_STRING" --file "$FILE_PATH"
+
+if [ $? -eq 0 ]; then
+  echo "File uploaded successfully"
+else
+  echo "Error: File upload failed. Please try again."
+  exit 1
+fi
