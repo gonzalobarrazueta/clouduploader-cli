@@ -3,7 +3,7 @@
 ENV_FILE="../config/.env"
 
 if [ -f "$ENV_FILE" ]; then
-  # Filters out lines that start with comments
+  # Filters out lines that are comments and creates the environment variables
   export $(grep -v '^#' "$ENV_FILE" | xargs)
 fi
 
