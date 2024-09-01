@@ -18,7 +18,7 @@ fi
 # Ensures a file path is provided
 FILE_PATH=$1
 
-if [ -z "$FILE_PATH"]; then
+if [ -z "$FILE_PATH" ]; then
   echo "Error: Please specify a file to upload."
   echo "Usage: $0 <file_path>"
   exit 1
