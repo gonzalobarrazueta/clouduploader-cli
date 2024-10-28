@@ -30,6 +30,9 @@ if [ ! -f "$FILE_PATH" ]; then
   exit 1
 fi
 
+# Extracts the file name without the extension or path
+file_name=$(echo "$FILE_PATH" | grep -o '[^/]*$')
+
 # Upload file to Azure Blob Storage
 az storage blob upload \
 	--account-name "$AZURE_STORAGE_ACCOUNT" \
