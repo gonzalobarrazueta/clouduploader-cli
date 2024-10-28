@@ -33,6 +33,14 @@ fi
 # Extracts the file name without the extension or path
 file_name=$(echo "$FILE_PATH" | grep -o '[^/]*$')
 
+# Checks if a blob with the same name already exists in the container
+blob_exists=$(az storage blob exists \
+       --account-name "$AZURE_STORAGE_ACCOUNT" \
+       --container-name "$CONTAINER_NAME" \
+       --name "$file_name" \
+       --auth-mode login \
+       --query exists)
+
 # Upload file to Azure Blob Storage
 az storage blob upload \
 	--account-name "$AZURE_STORAGE_ACCOUNT" \
