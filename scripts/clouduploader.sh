@@ -41,6 +41,11 @@ blob_exists=$(az storage blob exists \
        --auth-mode login \
        --query exists)
 
+if [ "$blob_exists" = "true" ]; then
+  echo "File already exists in container. Please rename it or use a new file."
+  exit 1
+fi
+
 # Upload file to Azure Blob Storage
 az storage blob upload \
 	--account-name "$AZURE_STORAGE_ACCOUNT" \
