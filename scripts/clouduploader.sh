@@ -59,3 +59,10 @@ else
   echo "Error: File upload failed. Please try again."
   exit 1
 fi
+
+# Get URL of the file
+echo "URL: $(az storage blob url \
+       --account-name "$AZURE_STORAGE_ACCOUNT" \
+       --container-name "$CONTAINER_NAME" \
+       --name "$file_name" \
+       | sed 's|https://DefaultEndpointsProtocol=||')"
